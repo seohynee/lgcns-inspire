@@ -1,0 +1,55 @@
+.container {
+    border: 1px solid red;
+    width: 1000px;
+}
+
+.tour-intro {
+    border: 1px solid blue;
+    text-align: center;
+    color: #7758b4;
+    background-color: #ffc2cb;
+    font-weight: bold;
+    margin-top: 10px; /*위에 여백 10px*/
+}
+
+.tour-list {
+    border: 1px solid pink;
+    width: 1000px;
+    overflow: hidden; /* to hide the scroll bar */
+}
+
+/* 자손 선택자 ; > 선택자 없애도 됨 -> 후손 선택자 이용*/
+.tour-list > .tour-prd > a > img {
+    width: 200px;
+    border-radius: 50%;
+}
+
+.tour-prd > a {
+    text-decoration: none;
+}
+
+button {
+    width: 180px;
+    border-radius: 25px;
+    padding: 10px 20px;
+    margin: 10px 5px 10px 10px;
+    border: none;
+}
+
+.tour-prd h3, button {
+    text-align: center;
+}
+
+.tour-prd {
+    display: inline-block;
+    width: 200px;
+
+    margin: 30px 5px 30px 10px;
+    border-radius: 20px;
+    padding: 10px;
+    border: 4px solid #ffc2cb;
+}
+
+span {
+    color:white;
+}

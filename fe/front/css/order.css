@@ -1,0 +1,28 @@
+.box > .accent {
+    color: red;
+    font-weight: bold;
+}
+
+h2 {
+    text-align: center;
+    color: #7758b4;
+    font-size: 24px;
+}
+
+/*text가 c로 시작하는 h2 요소에만 해당*/
+h2[text^="c"] {
+    color:aquamarine;
+}
+
+.text-small {
+    font-size: 0.7em;
+}
+
+.box {
+    border : 1px solid red;
+    border-radius: 12px;
+    font-size: 1.2em;
+    font-weight: bold;
+    text-align: center;
+    line-height: 32px;
+}
