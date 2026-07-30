@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <script>
+            /*
+            함수(function) vs 메서드(method)
+            arrow function vs lambda expression
+            코드 블럭 (특정 기능을 수행하기 위한)
+            */
+
+
+            // definiton : 함수에 대한 정의 / 함수 이름 : test / 매개변수 정의 : x, y
+           function test(x, y) {
+            return x + y ;
+           }; 
+
+           // calling : 정의되어있는 함수를 호출해서 씀
+           let result = test(10, 20); 
+           console.log(`debug >>>> result ${result}`);
+
+
+
+
+
+           // 익명의 함수 (함수 이름이 없음) -> 변수(btnHandler)가 함수의 이름이 된다.
+           let btnHandler = function() {
+            console.log(`익명의 함수입니다.`);
+           };
+           console.log(`debug >>>> function type ${typeof btnHandler}`);
+           btnHandler();
+
+
+
+
+           // es6 : arrow function
+           let arrowFunc = () => {
+            console.log(`화살표 함수 호출!!`);
+           };
+           arrowFunc();
+
+
+
+
+
+           let add = (a, b) => a + b;
+
+           // block {} 사용 시, return을 써줘야 값이 뜸
+           let add1 = (a, b) => {
+            return a + b;
+           };
+           console.log(`debug >>>> add function ${add(10,30)}`);
+           
+
+
+
+           let obj = {
+            name : "shlee",
+            study : function() {
+                return ["html", "script", "css"];
+            }
+           };
+           let ary = obj.study(); // method
+           console.log(`debug >>>> ary`, ary);
+
+
+
+           // es6
+           // 구조 분해 - Destructuring
+           obj = {
+            name : "shlee",
+            study : function() {
+                return {
+                    html : "html",
+                    script : "script",
+                    css : "css"
+                }
+            }
+           };
+
+           let {html, script,css} = obj.study(); // 구조 분해 후
+           console.log(`debug >>>> html`, html); // 바로 접근 (html로)
+
+           // 구조분해 안 할 경우 이런 식으로 코드 작성함
+           // let instance = obj.study();
+           // console.log(`debug >>>> html', instance.html);
+           
+
+
+
+           // lambda expression - 함수를 변수처럼, 값처럼 다루기 위해 이름 없이 간결하게 쓰는 문법
+           console.log(`debug >>>> 배열함수와 함께 사용되는 함수와 람다식`);
+           const ages = [20, 24, 26, 30, 34, 35];
+
+           const newAges = ages.map( age => age * 2); // block을 안 쓰면 return이 있다고 간주 
+           console.log(`debug >>>> newAges `, newAges);
+
+           const evenAges = ages.filter( age => age % 2 === 0);
+           console.log(`debug >>>> evenAges `, evenAges);
+
+
+
+           /*
+           Q1) 
+           - email 값을 키로 히고 nickName 값을 값으로 하는 새로운 객체를 만들려고 한다.
+           - 즉, 배열을 가공해서 하나의 객체로 합치는 것
+           hint)
+           - array : reduce(acc, cur, idx, ary) 함수
+                (acc, cur, idx, ary)
+                (누적, 현재 배열 요소, 현재 인덱스 처리 값, 원본 배열)
+
+           */
+
+           const userAry = [
+            {email : "naver.com", nickName : "IronMan"},
+            {email : "google.com", nickName : "Bob"},
+            {email : "daum.com", nickName : "Alice"}
+           ]
+
+           // 콜백 함수
+           const reduceAry = userAry.reduce( (obj, cur) => {
+            obj[cur.email] = cur.nickName; // 현재 요소의 email을 키로, nickName을 값으로 acc에 추가
+            return obj;
+           }, {});
+           console.log(`debug >>>> reduceAry`, reduceAry);
+
+           
+        </script>
+    </body>
+</html>
