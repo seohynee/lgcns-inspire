@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+        // Spread Operator
+        // 객체 또는 배열값을 다른 객체 또는 배열로 복사할 때 사용
+        // ...
+
+        let objOriginal = {
+            a : 10,
+            b : 20,
+        }
+
+        // let objNew = objOriginal;
+        // console.log(`debug === `, objNew === objOriginal); // true
+        // objNew.a = 20;
+        // console.log(`debug objNew `, objNew);
+        // console.log(`debug objOriginal `, objOriginal);
+        // objNew의 a값을 변경하면 objOriginal의 a값도 변경됨. (얕은 복사) 왜? objNew와 objOriginal은 같은 객체를 참조하고 있기 때문 
+
+        console.log(`spread operator`);
+        objNew = {...objOriginal}; // spread operator를 사용하여 객체 복사
+        objNew.a = 20;
+        console.log(`debug objNew `, objNew);
+        console.log(`debug objOriginal `, objOriginal);
+
+
+        // 구조분해(desctructuring)
+        // props (내장 객체)
+        // props a, props.b
+        // a, b
+        let {a, b} = objOriginal;
+
+        let ary = [1,2,3];
+        let newAry = {...ary};
+
+
+        // Optional Chaining (2020)
+        // 객체속성값의 유효성을 체크
+        // ?. 
+        const user = {
+            name : {
+                first : 'lim',
+                last : 'js'
+            },
+            address : {
+                city : 'seoul',
+                postcode : '123456'
+            }
+        }
+
+
+        // const postcode = user.address && user.address.postcode;
+        const postcode = user.address?.postcode; // 삼합연산자 느낌으로 수정 가능
+
+
+        // Null 병합 연산자 (??)
+        const cit = user.address?.city ?? 'busan';
+        
+
+        // Enhanced Object Literal - 축약 문법
+        let lang = 'react.js'
+
+        let subject = {
+            // lang : lang
+            lang,
+            coding() {
+                console.log(`coding`);
+            }
+        }
+
+    </script>
+</body>
+</html>
