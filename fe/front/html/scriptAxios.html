@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.19.0/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="../css/axios.css">
+</head>
+
+<body>
+    <h1>상품 목록</h1>
+    <div class="container" id="container"></div>
+
+    <script>
+        // image, title, price
+        ary = [];
+        const loadData = async (e) => {
+            await axios.get('https://fakestoreapi.com/products') // api 연동 (통신) 확인
+            .then(response => {
+                console.log(`debug >>>> response`, response);
+                ary = response.data;
+            })
+            .catch(error => {
+                console.log(`debug >>>> error`, error);
+            })
+            .finally (() => {
+                console.log(`debug >>>> request completed`);
+            });
+        }
+
+        const makeProduct = (e) => {
+            container.innerHTML = '';
+            ary.forEach( (object, idx) => {
+                const card = document.createElement('div'); // div 형태의 card 생성
+                card.className = 'card';
+
+                const img = document.createElement('img'); 
+                img.src = object.image;
+                const title = document.createElement('h3');
+                title.textContent = object.title;
+                const price = document.createElement('p');
+                price.textContent = object.price;
+
+                // 삭제 button
+                const delBtn = document.createElement('button');
+                delBtn.className = 'btn'
+                delBtn.textContent = '삭제';
+
+                delBtn.onclick = (e) => {
+                    window.alert('button click');
+                    ary.splice(idx, 1);
+                    makeProduct();
+                }
+
+                card.appendChild(img);
+                card.appendChild(title);
+                card.appendChild(price);
+                card.appendChild(delBtn);
+
+
+                container.appendChild(card);
+             });
+        }
+
+        const init = async (e) => {
+            await loadData();
+            makeProduct();
+        }
+        init();
+
+    </script>
+</body>
+</html>

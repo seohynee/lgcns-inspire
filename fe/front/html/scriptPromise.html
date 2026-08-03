@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <button type="button" id="btn">users</button>
+
+        <script>
+        //    // Promise 객체 생성
+        //    const promise = new Promise( (resolve, reject) => { // 상태에 따라서 resolve나 reject이 호출됨
+        //         setTimeout(() => {
+        //             // resolve({status : 200, data : {message : `success`}}); // resolve되면 success라는 데이터를 전달
+        //             reject( {status : 404});
+        //         },5000) // 5000 : 5초 후 전달
+        //    });
+
+        //    console.log(`debug >>>> promise`, promise);
+
+        //    promise
+        //     .then( (response) => {
+        //         console.log(`debug >>>> response`, response);
+        //     }) // resolve (성공)
+        //     .catch((error) => {
+        //         console.log(`debug >>>> error`, error);
+        //     }); // reject (에러 발생)
+
+
+
+        // script : fetch api, third parts : axios lib
+        // async를 함수 앞에 붙이면 "이 함수는 비동기 함수야, 내부에서 await를 쓸 수 있어"라고 선언하는 키워드
+        document.querySelector("#btn").onclick = async (e) => { // e (event의 약자): 묵시적 매개변수
+        //     // await : 이 Promise가 끝날 때까지 여기서 기다렸다가 resolve된 값을 꺼내줘
+
+        // 방법 1
+        //     await fetch('../server/data.json') // fetch 함수 자체가 promise
+        //         .then( response => response.json()) //json화를 시켜야만 data를 꺼낼 수 있음
+        //         .then( data => {
+        //             console.log(`debug >>>> data`, data);
+        //         })
+        //         .catch( error => {
+        //             console.log(`debug >>>> error`, error);
+        //         });
+
+
+        // 방법 2
+            try {
+                const response = await fetch('../server/users.json')
+                console.log(`debug >>>> response`, response);
+                const data = await response.json();
+                console.log(`debug >>>> fetch data`, data);
+                data.foreach ((object, idx) => {
+                    console.log(`debug >>>> data idx ${idx}`, object);
+                    console.log(`debug >>>> data idx ${idx}`, object.name);
+         });
+            } catch (error) {
+                console.log(`debug >>>> error ${error}`);
+            }
+         }
+
+
+        
+           
+            
+        </script>
+
+    </body>
+</html>
