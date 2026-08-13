@@ -6,6 +6,7 @@ import BlogWritePage from "./features/blog/page/BlogWritePage";
 import BlogReadPage from "./features/blog/page/BlogReadPage";
 import ErrorPage from "./pages/event/ErrorPage";
 import ViewPage from "./pages/event/ViewPage";
+import WeatherPage from "./features/openapi/page/WeatherPage";
 
 const ToyApp = () => {
     return (
@@ -16,13 +17,17 @@ const ToyApp = () => {
                 <Route path="/users/signIn"         element={<SignInPage/>} />
 
                 {/* blog */}
-                <Route path="/blog/index"          element={<BlogIndexPage/>} />
-                <Route path="/blog/write"          element={<BlogWritePage/>} />
-                <Route path="/blog/read/:blogId"   element={<BlogReadPage/>} />
+                <Route path="/blogs/index"          element={<BlogIndexPage/>} />
+                <Route path="/blogs/write"          element={<BlogWritePage/>} />
+                <Route path="/blogs/read/:blogId"   element={<BlogReadPage/>} />
                 
                 {/* blog - comment */}               
                 <Route path="/error"               element={<ErrorPage/>} />
                 <Route path="/read/:id"            element={<ViewPage/>} />
+
+                {/* open api */}               
+                <Route path="/openapi/index"               element={<WeatherPage/>} />
+
             </Routes>
         </BrowserRouter>
     )

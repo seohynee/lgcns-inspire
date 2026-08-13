@@ -1,5 +1,5 @@
-import '../../styles/book.css';
-import placeholder from '../../img/placeholder.png';
+import '../../styles/book.css' ;
+import placeholder from '../../img/placeholder.png' ;
 
 const Comment = ({data}) => {
     return(
@@ -8,7 +8,6 @@ const Comment = ({data}) => {
                 <img    src={placeholder}
                         className='image'></img>
             </div>
-
             <div>
                 <span>{data.writer} </span><p/>
                 <span>{data.comment} </span>
@@ -16,5 +15,4 @@ const Comment = ({data}) => {
         </div>
     );
 }
-
-export default Comment;
+export default Comment  ;

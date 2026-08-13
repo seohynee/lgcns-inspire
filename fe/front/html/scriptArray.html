@@ -49,8 +49,15 @@
                     img,
                     heading
                 }
-                
             ];
+
+            let divTag = "";
+            cardAry.forEach( (obj) => {
+                divTag += `<div><img src='${obj.img}'>` ; 
+                divTag += `<h2>${obj.heading}</h2></div>` ;      
+            });
+            document.getElementById("display").innerHTML = divTag ;
+            
         </script>
     </body>
 </html>

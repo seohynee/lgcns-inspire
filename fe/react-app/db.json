@@ -1,10 +1,116 @@
 {
-    "users" : [
-        {
-            "name" : "이서현",
-            "email" : "2seohxn@gmail.com",
-            "password" : "1234"
-        }
-        
-    ]
+  "users": [
+    {
+      "id": 1,
+      "name": "이서현",
+      "email": "2seohxn@gmail.com",
+      "password": "1234"
+    },
+    {
+      "name": "이서현",
+      "email": "2seohxn@naver.com",
+      "password": "1234",
+      "id": 4
+    },
+    {
+      "name": "이서현",
+      "email": "2seohxn@gmail.com",
+      "password": "1234",
+      "id": 5
+    },
+    {
+      "name": "이서현",
+      "email": "2seohxn@gmail.com",
+      "password": "1234",
+      "id": 6
+    },
+    {
+      "name": "이서현",
+      "email": "2seohxn@gmail.com",
+      "password": "1234",
+      "id": 7
+    },
+    {
+      "name": "이서현",
+      "email": "2seohxn@gmail.com",
+      "password": "1234",
+      "id": 8
+    },
+    {
+      "name": "이서현",
+      "email": "2seohxn@gmail.com",
+      "password": "1234",
+      "id": 9
+    },
+    {
+      "name": "이서현",
+      "email": "2seohxn@naver.com",
+      "password": "1234",
+      "id": 10
+    }
+  ],
+  "blogs": [
+    {
+      "id": 1,
+      "title": "til 작성",
+      "content": "component",
+      "category": "front-end",
+      "email": "2seohxn@gmail.com"
+    },
+    {
+      "id": 2,
+      "title": "링거",
+      "content": "java",
+      "category": "back-end",
+      "email": "2seohxn@naver.com"
+    },
+    {
+      "title": "t",
+      "content": "c",
+      "category": "cat",
+      "email": "a@a.com",
+      "id": 3
+    },
+    {
+      "title": "ㄹㄹ",
+      "content": "ㄹㄹ",
+      "category": "개발",
+      "email": "2seohxn@gmail.com",
+      "id": 4
+    },
+    {
+      "title": "test",
+      "content": "c",
+      "category": "cat",
+      "email": "a@a.com",
+      "id": 5
+    },
+    {
+      "title": "react",
+      "content": "react",
+      "category": "개발",
+      "email": "2seohxn@gmail.com",
+      "id": 6
+    }
+  ],
+  "comments": [
+    {
+      "blogId": 1,
+      "comment": "굿모닝입니다",
+      "email": "2seohxn@naver.com",
+      "id": 3
+    },
+    {
+      "blogId": 1,
+      "comment": "굿",
+      "email": "2seohxn@naver.com",
+      "id": 4
+    },
+    {
+      "blogId": 1,
+      "comment": "졸리다",
+      "email": "2seohxn@gmail.com",
+      "id": 5
+    }
+  ]
 }

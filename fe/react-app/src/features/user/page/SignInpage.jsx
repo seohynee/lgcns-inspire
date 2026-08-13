@@ -1,7 +1,9 @@
 // 로그인
 
+import { useState } from 'react';
 import styled  from 'styled-components';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import api from '../../../api/axios';
 
 const Container = styled.div`
     display: flex;
@@ -65,23 +67,75 @@ const TextLink = styled(Link)`
 `;
 
 const SignInPage = () => {
+    // state
+    const [form, setForm] = useState({
+        email : '', password :  ''
+    });
+    const moveUrl = useNavigate();
+
+    // 기존값을 유지하면서 현재 입력된 필드에 대한 상태 변화(업데이트)를 처리
+    const keyHandler = (e) => {
+            const {name, value} = e.target;
+            setForm({...form, [name]:value});
+        };
+    
+        /*
+        CRUD
+        - axios : get(), post(), put() | patch(), delete();
+        QueryString(url 뒤에 직접 바인딩) -> router에서 사용 가능 확인
+        - api.get(`url?email=xxxx&password=xxxxx`);
+        - api.get(`url`, {
+            params : {...form}
+        })
+
+        DB : SQL(Structor Query Language)
+        select name, email, password
+        from table
+        where email = ? and password = ?
+
+        */
+    
+        
+    const signInHandler = async (e) => {
+        e.preventDefault();
+
+        // json-server version
+                await api.get(`/users?email=${form.email}&password=${form.password}`)
+                .then( response => {
+                    console.log(`debug >>>> axios request success :`, response);
+                    if (response.status === 200) {
+
+                        localStorage.setItem('user', response.data[0].email);
+                        // 추후 추가 작업
+                        // header access token 가져오고 싶을 수 있어야함
+                        // 인증, 인가 -> JWT or spring security
+
+                        moveUrl(`/blogs/index`);
+                    }
+                })
+                .catch( error => {
+                    console.log(`debug >>>> axios request error :`, error);
+                })
+    }
+
     return (
         <Container>
             <FormWrapper>
-                <Title>로그인</Title>
-                <form>
-                    <Input  type='text' 
-                            name='name'
-                            placeholder="이름 입력하세요"/>
+                <Title>Sign In</Title>
+                <form onSubmit={signInHandler}>
                     <Input  type='email' 
                             name='email'
-                            placeholder="이메일 입력하세요"/>
+                            placeholder="이메일 입력하세요"
+                            value={form.email}
+                            onChange={keyHandler}/>
                     <Input  type='password' 
                             name='password'
-                            placeholder="패스워드 입력하세요"/>
-                    <Button type='submit'>가입하기</Button>
+                            placeholder="패스워드 입력하세요"
+                            value={form.password}
+                            onChange={keyHandler}/>
+                    <Button type='submit'>Sign In</Button>
                 </form>
-                <TextLink to='#'>이미 회원이시면 로그인</TextLink>
+                <TextLink to='/'>회원가입</TextLink>
             </FormWrapper>
         </Container>
     );

@@ -96,7 +96,7 @@ const SignUpPage = () => {
 
 
         /* Q)
-        - npx json-server --watch db.json --port 5000
+        - npx json-server --watch db.json --port 5001
         - axios 통신을 통해서 json-server 데이터를 전달하고 저장
         - 가입 성공 시(200) - SignInPage 이동
         - 가입 실패 시(4xx) - 
@@ -107,7 +107,7 @@ const SignUpPage = () => {
         .then( response => {
             console.log(`debug >>>> axios request success :`, response);
             if (response.status === 201) {
-                moveUrl(`users/signIn`);
+                moveUrl(`/users/signIn`);
             }
         })
         .catch( error => {
